@@ -81,11 +81,15 @@ class App(QWidget):
 		boot_tab = QShahed(log=self.log_area_widget)
 		repair_tab = QWidget()
 		screen_tab = QWidget()
-		setting_tab = QWidget()
+		imei_tab = QImei()
+		backup_tab = QBackup()
+		setting_tab = QMaryam()
 		# add this tabs to our notebook
 		notebook.addTab(boot_tab, "Boot")
 		notebook.addTab(repair_tab, "Repair")
 		notebook.addTab(screen_tab, "Screen")
+		notebook.addTab(imei_tab, "IMEI")
+		notebook.addTab(backup_tab, "Backup")
 		notebook.addTab(setting_tab, "Settings")
 
 	def logs_area(self, parent):
@@ -107,14 +111,14 @@ class App(QWidget):
 		log_layout.addWidget(self.log_area_widget)
 
 		# style
-		self.log_area_widget.setStyleSheet("width:400px;font-size:15px;color:#c0c0c0;")
+		self.log_area_widget.setStyleSheet("width:400px;font-size:15px;color:#555;background-color:#ddd;")
 
 		# scrollbar
 		scroll_bar = QScrollBar()
-		scroll_bar.setStyleSheet("width:10px;")
+		scroll_bar.setStyleSheet("width:15px;")
 		self.log_area_widget.setVerticalScrollBar(scroll_bar)
 
-		# print(QStyleFactory.keys())
+		#print(QStyleFactory.keys())
 
 	def progress_line(self, parent):
 		# progress  layout
@@ -129,5 +133,5 @@ def run():
 	program = QApplication(sys.argv)
 	unlix = App()
 	unlix.show()
-	program.setStyle("cleanlooks")
+	program.setStyle("Fusion")
 	sys.exit(program.exec_())

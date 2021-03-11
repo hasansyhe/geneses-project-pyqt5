@@ -2,9 +2,9 @@
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import os
+from guilib import *
 
 class QShahed(QWidget):
-	
 	def __init__(self, log):
 		self.path = os.getcwd()
 		self.logs_area = log
@@ -13,6 +13,7 @@ class QShahed(QWidget):
 		main_layout_boot = QVBoxLayout()
 		# add layout to self
 		self.setLayout(main_layout_boot)
+		self.setWindowOpacity(0.5)
 
 		# create hints box to help user
 		hint_box = QGroupBox("Hints")
@@ -188,4 +189,73 @@ class QShahed(QWidget):
 		self.logs_area.appendPlainText("starting Bootanimation ...")
 		os.system("adb shell bootanimation")
 
-		
+class QMaryam(QWidget):
+	def __init__(self):
+		self.path = os.getcwd()
+		super().__init__()
+		# create main layout
+		setting_main_layout = QVBoxLayout()
+		# set main layout inside self
+		self.setLayout(setting_main_layout)
+		developer = "or you can active developers edition of this project to see more options [IMEI Tab] or [Backup Tab]"
+		setting_hint_text = QLabel(f"<font size='2'>You can change themes and project language <br> {developer}</font> ")
+		setting_hints_box = QGroupBox("Hints")
+		setting_main_layout.addWidget(setting_hints_box)
+		layout_hints_text = QHBoxLayout()
+		setting_hints_box.setLayout(layout_hints_text)
+		layout_hints_text.addWidget(setting_hint_text)
+
+		themes_items_box = QGroupBox("Themes")
+		setting_main_layout.addWidget(themes_items_box)
+		# create layout inside themes_items_box
+		layout_themes = QVBoxLayout()
+		# set this layout inside themes_items_box
+		themes_items_box.setLayout(layout_themes)
+		# themes combobox
+		themes_combobox = QComboBox()
+		themes_combobox.setStyleSheet("height:25px;")
+		# add combobox 
+		list_theme = QStyleFactory.keys()
+		layout_themes.addWidget(themes_combobox)
+		for theme in list_theme:
+			themes_combobox.addItem(theme)
+		# create buuton
+		apply_button = QPushButton("Apply")
+		apply_button.setStyleSheet("height:20px;")
+		# add button
+		layout_themes.addWidget(apply_button)
+
+		# developer box
+		developer_box = QGroupBox("Active Developer Eidtion")
+		setting_main_layout.addWidget(developer_box)
+		# layout inside Developer box
+		developer_box_layout = QHBoxLayout()
+		# add layout to box
+		developer_box.setLayout(developer_box_layout)
+		# keys
+		key_one = QLineEdit()
+		key_tow = QLineEdit()
+		key_three = QLineEdit()
+		key_four = QLineEdit()
+		but_active = QPushButton("Enable")
+		list_keys = [key_one, key_tow, key_three, key_four]
+		for key_element in list_keys:
+			key_element.setPlaceholderText("N 0 F 0")
+			developer_box_layout.addWidget(key_element)
+		developer_box_layout.addWidget(but_active)
+
+
+		# empty label inside setting_main_layout
+		empty_label_setting = QLabel()
+		# add this label
+		setting_main_layout.addWidget(empty_label_setting)
+
+class QImei(QWidget):
+	def __init__(self):
+		super().__init__()
+		pass
+
+class QBackup(QWidget):
+	def __init__(self):
+		super().__init__()
+		pass

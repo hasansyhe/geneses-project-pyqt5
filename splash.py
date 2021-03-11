@@ -18,7 +18,7 @@ class main:
 		# setting window
 		label_screen_splash.setWindowFlags(Qt.SplashScreen | Qt.FramelessWindowHint)
 		label_screen_splash.show()
-		QTimer.singleShot(2000, self.app_spash.quit)
+		QTimer.singleShot(1000, self.app_spash.quit)
 		sys.exit(self.app_spash.exec_())
 
 if __name__ == '__main__':
